@@ -28,6 +28,55 @@
             border: 1px solid #222;
             margin: 20px 0;
         }
+
+        /* ===== ÁREA DE COMENTÁRIOS ===== */
+        .comentarios {
+            max-width: 500px;
+            margin: 40px auto;
+            text-align: left;
+            color: white;
+        }
+
+        .comentarios h2 {
+            text-align: center;
+            color: red;
+        }
+
+        .comentarios input,
+        .comentarios textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+        }
+
+        .comentarios button {
+            width: 100%;
+            padding: 10px;
+            background: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lista-comentarios {
+            margin-top: 20px;
+        }
+
+        .comentario {
+            background: #111;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .comentario span {
+            color: lime;
+            font-size: 13px;
+        }
     </style>
 </head>
 
@@ -105,6 +154,20 @@
         <a href="https://www.youtube.com/@Felipe_Tech12" style="color: white;">canal do criador do site!!!</a>
 
         <!--quem leu isso , certeza que é gay hahaha-->
+
+        <hr>
+
+        <!-- ===== ÁREA DE COMENTÁRIOS (ADICIONADA) ===== -->
+        <div class="comentarios">
+            <h2>💬 Deixe seu comentário</h2>
+
+            <input type="text" id="nome" placeholder="Seu nome (opcional)">
+            <textarea id="mensagem" rows="3" placeholder="Diga o quanto você gosta do site..."></textarea>
+            <button onclick="enviarComentario()">Enviar comentário</button>
+
+            <div class="lista-comentarios" id="listaComentarios"></div>
+        </div>
+
     </div>
 
     <!-- FIREBASE SDKs -->
@@ -143,6 +206,42 @@
             const total = snapshot.numChildren();
             document.getElementById("online").innerText =
                 "👁 Pessoas online agora: " + total;
+        });
+
+        /* ===== SISTEMA DE COMENTÁRIOS AO VIVO ===== */
+        const comentariosRef = db.ref("comentarios");
+
+        function enviarComentario() {
+            const nome = document.getElementById("nome").value || "Anônimo";
+            const mensagem = document.getElementById("mensagem").value;
+
+            if (mensagem.trim() === "") {
+                alert("Digite um comentário!");
+                return;
+            }
+
+            comentariosRef.push({
+                nome: nome,
+                mensagem: mensagem,
+                data: new Date().toLocaleString()
+            });
+
+            document.getElementById("mensagem").value = "";
+        }
+
+        // Mostrar comentários em tempo real
+        comentariosRef.on("child_added", snapshot => {
+            const data = snapshot.val();
+
+            const div = document.createElement("div");
+            div.classList.add("comentario");
+
+            div.innerHTML = `
+                <span>${data.nome} • ${data.data}</span>
+                <p>${data.mensagem}</p>
+            `;
+
+            document.getElementById("listaComentarios").prepend(div);
         });
     </script>
 
