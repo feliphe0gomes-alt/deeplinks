@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,38 @@
     <style>
         body {
             background-color: black;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .corpovermelho {
             text-align: center;
+            padding: 20px;
         }
 
         a {
             display: block;
+            margin: 4px 0;
+            text-decoration: none;
+        }
+
+        hr {
+            border: 1px solid #222;
+            margin: 20px 0;
         }
     </style>
 </head>
 
 <body>
     <div class="corpovermelho">
+
         <h1 style="color: red;">deep web links</h1>
 
-        <!-- CONTADOR DE PESSOAS ONLINE -->
-        <p id="online" style="color: lime; font-size: 18px;"></p>
-
-        <div class="imagem"></div>
+        <!-- CONTADOR REAL -->
+        <p id="online" style="color: lime; font-size: 18px;">
+            👁 Pessoas online agora: conectando...
+        </p>
 
         <hr>
 
@@ -37,17 +49,17 @@
         <a href="http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/" style="color: green;">ahmia</a>
         <a href="http://vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion/" style="color: green;">riseup</a>
         <a href="https://27m3p2uv7igmj6kvd4ql3cct5h3sdwrsajovkkndeufumzyfhlfev4qd" style="color: green;">the intercept</a>
-        <a href="http://p53lf57qovyuvwsc6xnrppyply3vtqm7l6pcobkmyqsiofyeznfu5uqd.onion/" style="color: green;">ProPublica</a>
-        <a href="http://sdolvtfhatvsysc6l34d65ymdwxcujausv7k5jk4cy5ttzhjoi6fzvyd.onion/" style="color: green;">SecureDrop</a>
+        <a href="p53lf57qovyuvwsc6xnrppyply3vtqm7l6pcobkmyqsiofyeznfu5uqd.onion/" style="color: green;">ProPublica</a>
+        <a href="sdolvtfhatvsysc6l34d65ymdwxcujausv7k5jk4cy5ttzhjoi6fzvyd.onion/" style="color: green;">SecureDrop</a>
         <a href="https://imprezareshna326gqgmbdzwmnad2wnjmeowh45bs2buxarh5qummjad.onion/" style="color: green;">Impreza Hosting</a>
         <a href="http://zerobinftagjpeeebbvyzjcqyjpmjvynj5qlexwyxe7l3vqejxnqv5qd.onion/" style="color: green;">ZeroBin</a>
-        <a href="http://answerszuvs3gg2l64e6hmnryudl5zgrmwm3vh65hzszdghblddvfiqd.onion/" style="color: green;">Respostas Ocultas</a>
-        <a href="http://archiveiya74codqgiixo33q62qlrqtkgmcitqx5u2oeqnmn5bpcbiyd.onion/" style="color: green;">Archive Today</a>
+        <a href="answerszuvs3gg2l64e6hmnryudl5zgrmwm3vh65hzszdghblddvfiqd.onion/" style="color: green;">Respostas Ocultas</a>
+        <a href="archiveiya74codqgiixo33q62qlrqtkgmcitqx5u2oeqnmn5bpcbiyd.onion/" style="color: green;">Archive Today</a>
         <a href="https://www.bbcnewsd73hkzno2ini43t4gblxvycyac5aw4gnv7t2rccijh7745uqd.onion/" style="color: green;">Espelho Tor da BBC</a>
         <a href="http://ciadotgov4sjwlzihbbgxnqg3xiyrg7so2r2o3lt5wz5ypk4sxyjstad.onion/" style="color: green;">A CIA</a>
         <a href="https://sci-hub.se/" style="color: green;">Sci-Hub</a>
         <a href="http://facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion" style="color: green;">Facebook</a>
-        <a href="http://anonyradixhkgh5myfrkarggfnmdzzhhcgoy2v66uf7sml27to5n2tid.onion/" style="color: green;">Rádio Deep Web</a>
+        <a href="anonyradixhkgh5myfrkarggfnmdzzhhcgoy2v66uf7sml27to5n2tid.onion/" style="color: green;">Rádio Deep Web</a>
         <a href="http://y22arit74fqnnc2pbieq3wqqvkfub6gnlegx3cl6thclos4f7ya7rvad.onion/" style="color: green;">Dark Mixer</a>
         <a href="http://hqfld5smkr4b4xrjcco7zotvoqhuuoehjdvoin755iytmpk4sm7cbwad.onion/" style="color: green;">Mixabit</a>
         <a href="http://mp3fpv6xbrwka4skqliiifoizghfbjy5uyu77wwnfruwub5s4hly2oid.onion/" style="color: green;">EasyCoin</a>
@@ -91,18 +103,47 @@
         <a href="http://nv3x2jozywh63fkohn5mwp2d73vasusjixn3im3ueof52fmbjsigw6ad.onion/" style="color: green;">Comic Books</a>
 
         <a href="https://www.youtube.com/@Felipe_Tech12" style="color: white;">canal do criador do site!!!</a>
+
+        <!--quem leu isso , certeza que é gay hahaha-->
     </div>
 
-    <!-- SCRIPT DO CONTADOR -->
-    <script>
-        function atualizarOnline() {
-            let pessoas = Math.floor(Math.random() * 38) + 5;
-            document.getElementById("online").innerText =
-                "👁 Pessoas online agora: " + pessoas;
-        }
+    <!-- FIREBASE SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-        atualizarOnline();
-        setInterval(atualizarOnline, 5000);
+    <script>
+        // CONFIGURAÇÃO DO SEU FIREBASE
+        const firebaseConfig = {
+          apiKey: "AIzaSyCjE4RLAB47SL8VS0p7AntZH3AMO7nusaw",
+          authDomain: "contador-d33d8.firebaseapp.com",
+          databaseURL: "https://contador-d33d8-default-rtdb.firebaseio.com",
+          projectId: "contador-d33d8",
+          storageBucket: "contador-d33d8.appspot.com",
+          messagingSenderId: "761728415402",
+          appId: "1:761728415402:web:6873e34033e83eebc902d3"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const onlineRef = db.ref("onlineUsers");
+
+        // ID único por sessão
+        const sessionId = Date.now() + "_" + Math.random().toString(36).substring(2);
+
+        // Marca usuário como online
+        onlineRef.child(sessionId).set(true);
+
+        // Remove quando sair da página
+        window.addEventListener("beforeunload", () => {
+            onlineRef.child(sessionId).remove();
+        });
+
+        // Atualiza contador em tempo real
+        onlineRef.on("value", snapshot => {
+            const total = snapshot.numChildren();
+            document.getElementById("online").innerText =
+                "👁 Pessoas online agora: " + total;
+        });
     </script>
 
 </body>
